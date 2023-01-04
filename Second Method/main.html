@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <link rel = "stylesheet" href="style.css">
+
+</head>
+<body onload="playGame()">
+
+  <div id="game">
+    <h1>Rock Paper Scissors</h1>
+    <div id="choices">
+      <img src= "pictures/rock.png" rock class="choice">
+      <img src="pictures/paper.png" id="paper" class="choice">
+      <img src="pictures/scissors.png" id="scissors" class="choice">
+      <br>
+      <input type="button" id="btn-start" value = "Click to Start">
+    </div>
+    <div id="result">
+      <p id="message"></p>
+      <img id="computer-choice">
+    </div>
+  </div>
+  
+</body>
+<script src = "logic.js"></script>
+</html>
+
+
+  
