@@ -8,6 +8,15 @@ const setPlayerChoice = (selection) => {
     console.warn("No selection! Setting default selection...")
     playerChoice=DEFAULT_USER_CHOICE;
   }
+  let temp=document.querySelectorAll("img")
+  console.log(temp)
+  for(let i=0;i<temp.length;i++){
+    if(temp[i].id==selection){
+      temp[i].style.filter="invert(1)"}
+      else{
+        temp[i].style.filter="invert(0)"
+      }
+  }
 };
 
 const getComputerChoice = () => {
@@ -36,6 +45,7 @@ if (cChoice === pChoice) {
 }
 
 function GameOn(){
+  rock_selection.style.filter="invert(0)"
   if (gameIsRunning) {
     return;
   }
