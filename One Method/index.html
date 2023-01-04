@@ -15,18 +15,18 @@
     <h1 class="display-6 mb-5">Rock, Paper, Sciccors Game!</h1>
     <div class="container w-50 align-content-center bg-dark text-light" style="border-radius:10px;" id="game-area">
       <p1>Please select a move below:</p1><br>
-      <div class="text-center align-content-center">
+      <div class="text-center align-content-center mt-3">
       <center>
         <table>
           <tr>
             <td>
-              <img src="images/fist.png" class="img-fluid display-inline" class="display:inline-block;" height="90" width="90">
+              <img src="images/fist.png" class="img-fluid display-inline" class="display:inline-block;" id="rock-selection" height="90" width="90" onclick="setPlayerChoice('ROCK')">
             </td>
             <td>
-              <img src="images/palm.png" class="img-fluid display-inline" class="display:inline-block;" height="90" width="90">
+              <img src="images/palm.png" class="img-fluid display-inline" class="display:inline-block;" id="paper-selection" height="90" width="90" onclick="setPlayerChoice('PAPER')">
             </td>
             <td>
-              <img src="images/scissor.png" class="img-fluid display-inline" class="display:inline-block;" height="90" width="90">
+              <img src="images/scissor.png" class="img-fluid display-inline" class="display:inline-block;" id="scissors-selection" height="90" width="90" onclick="setPlayerChoice('SCISSORS')">
             </td>
           </tr>
         </table>

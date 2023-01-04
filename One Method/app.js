@@ -1,17 +1,13 @@
-
-
 let gameIsRunning = false;
+let user_choice = '';
 
-const getPlayerChoice = () => {
-  const selection = prompt(
-    `${ROCK}, ${PAPER} or ${SCISSORS}?`,
-    ''
-  ).toUpperCase();
-  if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
-    alert(`Invalid choice! We chose ${DEFAULT_USER_CHOICE} for you!`);
-    return DEFAULT_USER_CHOICE;
+const setPlayerChoice = (selection) => {
+  console.log(`PLAYER CHOICE: ${selection}`)
+  user_choice=selection;
+  if(selection=="" || selection==null){
+    console.warn("No selection! Setting default selection...")
+    playerChoice=DEFAULT_USER_CHOICE;
   }
-  return selection;
 };
 
 const getComputerChoice = () => {
@@ -59,3 +55,4 @@ function GameOn(){
   alert(message);
   gameIsRunning = false;
 };
+
