@@ -1,5 +1,10 @@
 let gameIsRunning = false;
 let user_choice = '';
+let winnerText = document.getElementById("winner");
+UserScore=0;
+ComputerScore=0;
+rounds=0;
+roundsLog = [];
 
 const setPlayerChoice = (selection) => {
   console.log(`PLAYER CHOICE: ${selection}`)
@@ -44,25 +49,44 @@ if (cChoice === pChoice) {
 }
 }
 
-function GameOn(){
-  rock_selection.style.filter="invert(0)"
-  if (gameIsRunning) {
-    return;
+function GameStart(){
+  rounds++
+  let computer_choice = getComputerChoice();
+  console.log(`COMPUTER CHOICE: ${computer_choice}`)
+  temp = document.getElementById(`C${computer_choice.toLowerCase()}-selection`)
+  temp.style.filter="invert(1)"
+
+  console.log(`YOUR CHOICE: ${user_choice}`)
+  let winner = getWinner(computer_choice, user_choice);
+
+  if(winner==RESULT_DRAW){
+    winnerText.innerText="Draw!"
+    console.log("DRAW!")}
+  else if(winner==RESULT_PLAYER_WINS){
+    UserScore++
+    console.log("YOU WIN!")
+    winnerText.innerText="You Win!"}
+  else{
+    console.log("YOU LOSE!")
+    ComputerScore++
+  winnerText.innerText="Computer Wins!"}
+    sleep(1500).then(()=>{
+      ScoreUpdate()
+    })
+}
+
+function ScoreUpdate(){
+  document.getElementById("computer-score").innerText=ComputerScore
+  document.getElementById("user-score").innerText=UserScore
+  document.getElementById("round").innerText=rounds;
+  let temp=document.querySelectorAll("img")
+  console.log(temp)
+  for(let i=0;i<temp.length;i++){
+    temp[i].style.filter="invert(0)"
   }
-  gameIsRunning = true;
-  console.log('Game is starting...');
-  const playerChoice = getPlayerChoice();
-  const computerChoice = getComputerChoice();
-  const winner = getWinner(computerChoice, playerChoice);
-  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore you `;
-  if (winner === RESULT_DRAW) {
-    message = message + 'had a draw.';
-  } else if (winner === RESULT_PLAYER_WINS) {
-    message = message + 'won.';
-  } else {
-    message = message + 'lost.';
-  }
-  alert(message);
-  gameIsRunning = false;
-};
+}
+
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 

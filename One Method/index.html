@@ -33,12 +33,30 @@
       </center>
       </div>
       <div class="text-center align-content-center mt-3">
-      <p>Computer's Score: <span id="computer-score">0</span></p>
-      <p>Your Score: <span id="player-score">0</span></p>
+      <p>Your Score: <span id="user-score">0</span></p>
+      <center>
+        <table>
+          <tr>
+            <td>
+              <img src="images/fist.png" class="img-fluid display-inline" class="display:inline-block;" id="Crock-selection" height="90" width="90">
+            </td>
+            <td>
+              <img src="images/palm.png" class="img-fluid display-inline" class="display:inline-block;" id="Cpaper-selection" height="90" width="90">
+            </td>
+            <td>
+              <img src="images/scissor.png" class="img-fluid display-inline" class="display:inline-block;" id="Cscissors-selection" height="90" width="90">
+            </td>
+          </tr>
+        </table>
+      </center>
+      <p>Computer Score: <span id="computer-score">0</span></p>
       <p>Round: <span id="round">0</span></p>
       <p>Winner: <span id="winner"></span></p>
-      <button class="btn btn-primary" id="play-button" onclick="playGame()">Play</button>
+      <button class="btn btn-primary" id="play-button" onclick="GameStart()">Play</button>
       </p>
+    </div>
+    <div class="container text-center" id="rounds-log">
+      
     </div>
   </div>
 </body>
