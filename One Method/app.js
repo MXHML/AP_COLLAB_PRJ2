@@ -73,6 +73,13 @@ function GameStart(){
     sleep(1500).then(()=>{
       ScoreUpdate()
     })
+    let d = new Date();
+    let time=d.toString()
+    let slicePoint = time.indexOf("G")
+    time=time.slice(0,slicePoint);
+  let LOGGER =new Array(`${time} [ROUND ${rounds}] Your selection: ${user_choice.toLowerCase()}, Computer selection: ${computer_choice.toLowerCase()}, result: <span class="highlight">${winner}</span>`)
+  roundsLog.push(LOGGER);
+  PopulateLog();
 }
 
 function ScoreUpdate(){
@@ -90,3 +97,17 @@ async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function PopulateLog(){
+  let d = new Date();
+  let parent = document.getElementById("rounds-log-data");
+  while(parent.firstChild){
+    parent.removeChild(parent.lastChild);}
+  console.log("Populating...")
+  for(let x=0;x<roundsLog.length;x++){
+    console.log(`Added index ${x} to HTML Dom!`)
+    let time=d.toString()
+    let slicePoint = time.indexOf("G")
+    time=time.slice(0,slicePoint);
+    parent.innerHTML+=`${roundsLog[x][0]}<br>`
+  }
+}
