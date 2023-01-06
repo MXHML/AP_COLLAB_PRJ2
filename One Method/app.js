@@ -93,6 +93,16 @@ function ScoreUpdate() {
   for (let i = 0; i < temp.length; i++) { //Loop through all images
     temp[i].style.filter = "invert(0)" //Make sure the image is not inverted
   } //Changing all images back to their original state
+  if(ComputerScore>UserScore){
+    document.getElementById("computer-score").style.color="green"
+  }
+  else if(ComputerScore<UserScore){
+    document.getElementById("user-score").style.color="green"
+  }
+  else{
+    document.getElementById("computer-score").style.color="white"
+    document.getElementById("user-score").style.color="white"
+  }
 }
 
 async function sleep(ms) {
@@ -107,6 +117,13 @@ function PopulateLog() {
   console.log("Populating...") //Entries.
   for (let x = 0; x < roundsLog.length; x++) { //Loop through the roundsLog list
     console.log(`Added index ${x} to HTML Dom!`) //Logging to console for debug
-    parent.innerHTML += `${roundsLog[x][0]}<br>` //Add the data to the HTML DOM
+    if(roundsLog[x][0].includes("COMPUTER_WINS")){
+      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","red")}<br>`
+    }
+    else if(roundsLog[x][0].includes("DRAW")){
+      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","grey")}<br>`
+    }
+    else{
+    parent.innerHTML += `${roundsLog[x][0]}<br>`} //Add the data to the HTML DOM
   }
 }
