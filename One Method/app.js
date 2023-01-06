@@ -118,12 +118,35 @@ function PopulateLog() {
   for (let x = 0; x < roundsLog.length; x++) { //Loop through the roundsLog list
     console.log(`Added index ${x} to HTML Dom!`) //Logging to console for debug
     if(roundsLog[x][0].includes("COMPUTER_WINS")){
-      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","red")}<br>`
+      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","red")}<br>` //Add the data to the HTML DOM
     }
     else if(roundsLog[x][0].includes("DRAW")){
-      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","grey")}<br>`
+      parent.innerHTML += `${roundsLog[x][0].toString().replace("highlight","grey")}<br>` //Add the data to the HTML DOM
     }
     else{
     parent.innerHTML += `${roundsLog[x][0]}<br>`} //Add the data to the HTML DOM
   }
+}
+function RoundManager(){
+sleep(1500).then(()=>{
+if(rounds==rounds_input_slider.value){
+  if(UserScore>ComputerScore){
+    winnerText.innerText="You Win! :)"
+  }
+  else if(ComputerScore>UserScore){
+    winnerText.innerText="You Lose :("
+  }
+  else{
+    winnerText.innerText="Tie!"
+  }
+  UserScore=0
+  ComputerScore=0
+  rounds=0;
+  roundsLog=[];
+  PopulateLog();
+  ScoreUpdate();}})
+}
+
+rounds_input_slider.oninput = function(){
+  document.getElementById("rounds-counter").innerText = `Rounds: ${this.value}`
 }
